@@ -1,24 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import ImageGrid from "./components/ImageGrid";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+
+import UploadButton from "./components/UploadButton";
+import { saveImage, getImages } from "./services/imageService";
 
 function App() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const { data: images } = await getImages();
+      setImages([...images]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleFileChange = async (event) => {
+    try {
+      const { data: image } = await saveImage(event.target.files[0]);
+      setImages((prevState) => [image, ...prevState]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <main className="app-container">
+        <UploadButton onChange={handleFileChange} />
+        <ImageGrid items={images} />
+      </main>
+      <Footer />
     </div>
   );
 }
