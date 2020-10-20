@@ -24,8 +24,14 @@ function App() {
   };
 
   const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+
+    if (!file.type.includes("image")) {
+      console.log("cannot upload non image file");
+      return;
+    }
     try {
-      const { data: image } = await saveImage(event.target.files[0]);
+      const { data: image } = await saveImage(file);
       setImages((prevState) => [image, ...prevState]);
     } catch (error) {
       console.log(error);
