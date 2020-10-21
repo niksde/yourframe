@@ -30,4 +30,7 @@ npm i -g serverless
 sls deploy -v
 ```
 
-Api endpoint will be shown in terminal. Copy that url and replace it with the value of REACT_APP_API_URL in .env of frontend.
+Api endpoint will be shown in terminal.
+<img src="https://github.com/NikhilShisode/youframe-api/tree/master/assets/apiendpoint-url.png" alt="screenshot of terminal">
+
+Copy that ServiceEndpoint url and replace it with the value of REACT_APP_API_URL in .env of frontend.
