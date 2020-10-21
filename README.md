@@ -12,7 +12,7 @@ npm start
 
 # change .env variable
 
-If you deploy your own backend using 'sls deploy' then change the api endpoint url in .env with url sls provides
+If you deploy your own backend using 'sls deploy -v' then change the api endpoint url in .env with url sls provides
 
 ```
 REACT_APP_API_URL=<api endpoint url>
