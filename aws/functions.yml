@@ -1,0 +1,13 @@
+Functions:
+  app:
+    handler: handler.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+          contentHandling: CONVERT_TO_BINARY

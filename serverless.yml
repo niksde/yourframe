@@ -1,0 +1,40 @@
+service:
+  name: youframe-api
+
+plugins:
+  - serverless-pseudo-parameters
+
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 256
+  stage: ${opt:stage, 'dev'}
+  profile: demo-user
+  region: ap-south-1
+  apiGateway:
+    binaryMediaTypes:
+      - "multipart/form-data"
+  environment:
+    IMAGES_BUCKET_NAME: ${self:custom.ImagesBucket.name}
+    IMAGES_TABLE_NAME: ${self:custom.ImagesTable.name}
+
+  iamRoleStatements:
+    - ${file(aws/iam/ImagesBucketIAM.yml):ImagesBucketIAM}
+    - ${file(aws/iam/ImagesTableIAM.yml):ImagesTableIAM}
+
+resources:
+  Resources:
+    ImagesBucket: ${file(aws/resources/ImagesBucket.yml):ImagesBucket}
+    ImagesBucketPolicy: ${file(aws/resources/ImagesBucket.yml):ImagesBucketPolicy}
+    ImagesTable: ${file(aws/resources/ImagesTable.yml):ImagesTable}
+
+functions: ${file(aws/functions.yml):Functions}
+
+custom:
+  ImagesBucket:
+    name: images-er3we19ns-${self:provider.stage}
+  ImagesTable:
+    name: !Ref ImagesTable
+    arn: !GetAtt ImagesTable.Arn
