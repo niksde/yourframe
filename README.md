@@ -31,7 +31,7 @@ sls deploy -v
 ```
 
 Api endpoint will be shown in terminal.
-![screenshot of terminal](https://github.com/NikhilShisode/youframe-api/blob/master/assets/apiendpoint-url.PNG)
+
 <img src="https://github.com/NikhilShisode/youframe-api/blob/master/assets/apiendpoint-url.PNG" alt="screenshot of terminal">
 
 Copy that ServiceEndpoint url and replace it with the value of REACT_APP_API_URL in .env of frontend.
