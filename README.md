@@ -39,5 +39,5 @@ Copy that ServiceEndpoint url and replace it with the value of REACT_APP_API_URL
 # api docs
 
 - endpoint - /upload
-  | - POST method - to upload image using formdata.
-  | - GET method - to fetch all images
+- POST method - to upload image using formdata.
+- GET method - to fetch all images
