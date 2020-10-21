@@ -35,3 +35,9 @@ Api endpoint will be shown in terminal.
 <img src="https://github.com/NikhilShisode/youframe-api/blob/master/assets/apiendpoint-url.PNG" alt="screenshot of terminal">
 
 Copy that ServiceEndpoint url and replace it with the value of REACT_APP_API_URL in .env of frontend.
+
+# api docs
+
+- endpoint - /upload
+  |- POST method - to upload image using formdata.
+  |- GET method - to fetch all images
