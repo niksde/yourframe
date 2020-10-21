@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import ImageGrid from "./components/ImageGrid";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-// import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import UploadButton from "./components/UploadButton";
 import { saveImage, getImages } from "./services/imageService";
@@ -30,8 +31,7 @@ function App() {
     if (!file) return;
 
     if (!file.type.includes("image")) {
-      console.log("cannot upload non image file");
-      // toast.error("cannot upload non image file");
+      toast.error("Cannot upload non image file");
       return;
     }
     try {
@@ -45,6 +45,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      <ToastContainer />
       <main className="app-container">
         <UploadButton onChange={handleFileChange} />
         <ImageGrid items={images} />
