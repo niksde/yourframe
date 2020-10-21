@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
 import ImageGrid from "./components/ImageGrid";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+// import { toast } from "react-toastify";
+import "./App.css";
 
 import UploadButton from "./components/UploadButton";
 import { saveImage, getImages } from "./services/imageService";
@@ -26,8 +27,11 @@ function App() {
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
 
+    if (!file) return;
+
     if (!file.type.includes("image")) {
       console.log("cannot upload non image file");
+      // toast.error("cannot upload non image file");
       return;
     }
     try {
