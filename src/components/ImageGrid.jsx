@@ -1,7 +1,10 @@
 import React from "react";
 import ImageCard from "./ImageCard";
+import sortBy from "../utility/sortBy";
 
 export default function ImageGrid({ items = [] }) {
+  if (items.length !== 0) items = sortBy(items);
+
   return (
     <div className="grid-container">
       {items.length !== 0 ? (
