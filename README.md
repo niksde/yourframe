@@ -6,7 +6,7 @@ Follow bellow instructions for setting up YouFrame backend api. Installing nodej
 
 # create AWS IAM user and configure it.
 
-- create aws IAM user role of name 'demo-user' and give admin privelleges or specific resource privellegs to use lambda, s3, and dynamodb.
+- create aws IAM user role of name 'demo-user' and give admin privileges or specific resource privileges to use lambda, s3, and dynamodb.
 - run following command in terminal.
 
 ```
@@ -30,10 +30,4 @@ npm i -g serverless
 sls deploy -v
 ```
 
-Api endpoint will be show in terminal. Copy that url and replace it with value of REACT_APP_API_URL in .env of frontend.
-
-- check logs
-
-```
-sls logs -f app -t
-```
+Api endpoint will be shown in terminal. Copy that url and replace it with the value of REACT_APP_API_URL in .env of frontend.
